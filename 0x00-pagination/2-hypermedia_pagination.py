@@ -58,7 +58,7 @@ class Server:
 
         return dataset[start_idx:end_idx]
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, any]:
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[int, List]:
         """
             This function takes page and page_size and returns a dictionary
             containing key-value pairs
