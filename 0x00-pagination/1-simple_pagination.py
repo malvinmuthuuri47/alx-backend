@@ -47,8 +47,8 @@ class Server:
             and returns a list if the index isn't out of range and otherwise,
             returns an empty list
         """
-        assert isinstance(page, int) and page > 0, "should_err"
-        assert isinstance(page_size, int) and page_size > 0, "should_err"
+        assert isinstance(page, int) and page > 0
+        assert isinstance(page_size, int) and page_size > 0
 
         start_idx, end_idx = index_range(page, page_size)
         dataset = self.dataset()
