@@ -2,10 +2,10 @@
 """Simple Pagination"""
 import csv
 import math
-from typing import List, Tuple
+from typing import List
 
 
-def index_range(page: int, page_size: int) -> Tuple[int, int]:
+def index_range(page: int, page_size: int) -> tuple[int, int]:
     """
         A function that takes two args, computes the start and end
         indexes and returns a tuple containing the start and end idx
