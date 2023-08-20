@@ -2,10 +2,10 @@
 """Simple Pagination"""
 import csv
 import math
-from typing import List
+from typing import List, Tuple
 
 
-def index_range(page: int, page_size: int) -> tuple[int, int]:
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
         A function that takes two args, computes the start and end
         indexes and returns a tuple containing the start and end idx
@@ -41,7 +41,7 @@ class Server:
 
         return self.__dataset
 
-    def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+    def get_page(self, page: int = 1, page_size: int = 10) -> List:
         """
             A function that calls the index_page() to handle the pagination
             and returns a list if the index isn't out of range and otherwise,
