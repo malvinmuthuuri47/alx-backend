@@ -4,6 +4,7 @@ BaseCaching = __import__('base_caching').BaseCaching
 
 
 class FIFOCache(BaseCaching):
+    """Child class inheriting from BaseCaching Parent class"""
     def __init__(self):
         """
         Call the super __init__ to initialize the cache_data which
