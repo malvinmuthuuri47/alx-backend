@@ -30,19 +30,22 @@ class MRUCache(BaseCaching):
             key - The key to store in the cache
             value - The value asscosiated with the given key
         """
-        if key in self.cache_data:
-            # When updatig an existing key's value, do not update its age
-            self.cache_data[key] = value
-        elif len(self.cache_data) >= self.MAX_ITEMS:
-            # Find the most recently used item based on age bits
-            mru_key = max(self.age_bits, key=self.age_bits.get)
-            del self.cache_data[mru_key]
-            del self.age_bits[mru_key]
-            print(f"DISCARD {mru_key}")
+        if key or item:
+            if key in self.cache_data:
+                # When updatig an existing key's value, do not update its age
+                self.cache_data[key] = value
+            elif len(self.cache_data) >= self.MAX_ITEMS:
+                # Find the most recently used item based on age bits
+                mru_key = max(self.age_bits, key=self.age_bits.get)
+                del self.cache_data[mru_key]
+                del self.age_bits[mru_key]
+                print(f"DISCARD {mru_key}")
 
-        # Add the new key-value to the cache with the current counter val
-        self.cache_data[key] = value
-        self.age_bits[key] = self.counter
+            # Add the new key-value to the cache with the current counter val
+            self.cache_data[key] = value
+            self.age_bits[key] = self.counter
+        else:
+            return
 
     def get(self, key):
         """This function gets the key from the cache"""
