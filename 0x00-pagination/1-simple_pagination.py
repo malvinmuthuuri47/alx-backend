@@ -41,7 +41,7 @@ class Server:
 
         return self.__dataset
 
-    def get_page(self, page: int = 1, page_size: int = 10) -> List:
+    def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
             A function that calls the index_page() to handle the pagination
             and returns a list if the index isn't out of range and otherwise,
@@ -53,7 +53,7 @@ class Server:
         start_idx, end_idx = index_range(page, page_size)
         dataset = self.dataset()
 
-        if start_idx >= len(dataset):
+        if start_idx > len(dataset):
             return []
 
         return dataset[start_idx:end_idx]
