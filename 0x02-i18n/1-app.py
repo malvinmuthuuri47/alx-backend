@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-
+"""Basic Babel setup"""
 from flask import Flask, render_template
 from flask_bable import Babel
 
 
 class Config:
+    """A class that determines the configuration for a flask instance"""
     LANGUAGES = ['en', 'fr']
     BABEL_DEFAULT_TIMEZONE = 'UTC'
     BABEL_DEFAULT_LOCALE = 'en'
