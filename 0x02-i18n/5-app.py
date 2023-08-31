@@ -48,9 +48,7 @@ def get_user():
     if user_id is not None:
         user_id = int(user_id)
         user = users.get(user_id)
-        if user:
-            username = user['name']
-            return username
+        return user
     else:
         return None
 
