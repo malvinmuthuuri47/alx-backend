@@ -4,11 +4,13 @@
 from flask import Flask, render_template, request, g
 from flask_babel import Babel
 
+
 class Config:
     """Default config for the app"""
     LANGUAGES = ['en', 'fr']
     BABEL_DEFUALT_TIMEZONE = 'UTC'
     BABEL_DEFAULT_LOCALE = 'en'
+
 
 users = {
         1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
@@ -21,10 +23,12 @@ app = Flask(__name__)
 app.config.from_object(Config)
 babel = Babel(app)
 
+
 @app.route('/')
 def index():
     """root route of the function"""
     return render_template('5-index.html')
+
 
 @babel.localeselector
 def get_locale():
@@ -36,6 +40,7 @@ def get_locale():
         return locale
     # Find best_matching locale from supported languages
     return request.accept_languages.best_match(app.config['LANGUAGES'])
+
 
 def get_user():
     """Returns a username from the users dictionary"""
@@ -49,10 +54,12 @@ def get_user():
     else:
         return None
 
+
 @app.before_request
 def before_request():
     """A function that makes the username accessible globally"""
     g.user = get_user()
+
 
 if __name__ == '__main__':
     app.run()
