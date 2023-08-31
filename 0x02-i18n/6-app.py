@@ -3,6 +3,7 @@
 
 from flask import Flask, render_template, request, g
 from flask_babel import Babel
+from typing import Dict
 
 
 class Config:
@@ -63,15 +64,15 @@ def get_locale():
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
-def get_user():
+def get_user() -> Dict:
     """This function returns the username of the user logging in"""
     user_id = request.args.get('login_as')
     if user_id is not None:
         user_id = int(user_id)
         user = users.get(user_id)
-        if user:
-            username = user['name']
-            return username
+        return user
+    else:
+        return None
 
 
 @app.before_request
@@ -82,4 +83,4 @@ def before_request():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=5000, debug=True)
