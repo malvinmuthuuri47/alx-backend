@@ -22,7 +22,7 @@ def index():
     return render_template('2-index.html')
 
 
-@bable.localeselector
+@babel.localeselector
 def get_locale():
     """A function that determines the best lang for a client"""
     # Get user's preferred language from the request
